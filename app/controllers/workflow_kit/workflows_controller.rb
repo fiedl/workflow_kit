@@ -83,5 +83,14 @@ module WorkflowKit
         format.json { head :no_content }
       end
     end
+
+    # PUT /workflows/1/execute
+    def execute
+      @workflow = Workflow.find( params[ :id ] )
+      @workflow.execute
+      
+      flash[ :notice ] = I18n.t( :executed_workflow, @workflow.name )
+      redirect_to :back
+    end
   end
 end
