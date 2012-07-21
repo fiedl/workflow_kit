@@ -17,3 +17,4 @@ gem "jquery-rails"
 # gem 'debugger'
 
 gem 'nifty-generators'
+gem 'sass-rails'
