@@ -23,15 +23,19 @@ module WorkflowKit
 
   end
 
-  class TestBrick < Brick
-    def description
-      "This is a test brick of the workflow_kit."
-    end
 
-    def execute( params )
-      p "Executing TestBrick"
-      p params
-    end
-  end
+# If uncommented, this Brick will also be visible in the application.
+# Thus, this should stay commented in production.
+#
+#  class TestBrick < Brick
+#    def description
+#      "This is a test brick of the workflow_kit."
+#    end
+#
+#    def execute( params )
+#      p "Executing TestBrick"
+#      p params
+#    end
+#  end
 
 end

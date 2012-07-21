@@ -1,22 +1,39 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-module WorkflowKit
+describe WorkflowKit::Step do
 
-  describe Step do
+  before do
+    @workflow = create_workflow # in spec/support/factory.rb
+    @step = @workflow.steps.first
+  end
 
-    before do
-      @workflow = create_workflow # in spec/support/factory.rb
-      @step = @workflow.steps.first
+  subject { @step }
+
+  it { should respond_to( :sequence_index ) }
+  it { should respond_to( :sequence_index= ) }
+  it { should respond_to( :brick_name ) }
+  it { should respond_to( :brick_name= ) }
+  it { should respond_to( :parameters ) }
+
+  describe "#workflow" do
+    subject { @step.workflow }
+    it { should == @workflow }
+  end
+
+  describe "#execute" do
+    subject { @step.execute }
+    it "should execute the step" do
+      subject.should ==
+        "Fill a large pot with water, put it on a cooker and wait until a temperature of 100 °C is reached."
     end
-
-    describe "#execute" do
-      it "should work to execute a step" do
-        @step.execute.should ==
-          "Fill a large pot with water, put it on a cooker and wait until a temperature of 100 °C is reached."
-      end
-    end
-
+  end
+  
+  describe "#brick" do
+    subject { @step.brick }
+    it { should be_kind_of( WorkflowKit::Brick ) }
   end
 
 end
+
+

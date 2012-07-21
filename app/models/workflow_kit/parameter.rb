@@ -13,6 +13,8 @@ module WorkflowKit
     def value
       v = super
       v = v.to_i if ( not v.to_i == nil ) and ( v.to_i.to_s == v )
+      v = true if v == "true"
+      v = false if v == "false"
       return v
     end
 

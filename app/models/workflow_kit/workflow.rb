@@ -1,4 +1,3 @@
-
 module WorkflowKit
   class Workflow < ActiveRecord::Base
 
