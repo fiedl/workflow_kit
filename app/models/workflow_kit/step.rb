@@ -4,14 +4,17 @@ module WorkflowKit
   
   class Step < ActiveRecord::Base
 
-    attr_accessible :sequence_index, :brick_name
+    attr_accessible :sequence_index, :brick_name, :parameters
 
     belongs_to :workflow
-    has_many :parameters, dependent: :destroy, as: :parameterable
+
+    extend WorkflowKit::Parameterable
+    has_many_parameters
+
 
     def execute( params = {} )
       params = {} unless params
-      params = params.merge( Parameter.to_hash( self.parameters ) ) if self.parameters.count > 0
+      params = params.merge( self.parameters_to_hash ) if self.parameters.count > 0
       self.brick.execute( params ) if self.brick
     end
 

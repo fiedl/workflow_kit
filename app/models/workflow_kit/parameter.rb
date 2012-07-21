@@ -6,7 +6,8 @@ module WorkflowKit
     belongs_to :parameterable, polymorphic: true
 
     def key
-      super.to_symbol
+      return super.to_sym unless super.kind_of? Symbol
+      return super
     end
 
     def value
