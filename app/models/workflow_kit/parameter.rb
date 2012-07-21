@@ -3,7 +3,7 @@ module WorkflowKit
 
     attr_accessible :key, :value
 
-    belongs_to :workflow_kit_parameterable, polymorphic: true
+    belongs_to :parameterable, polymorphic: true
 
     def key
       super.to_symbol

@@ -4,7 +4,7 @@ module WorkflowKit
     attr_accessible :sequence_index, :brick_name
 
     belongs_to :workflow
-    has_many :parameters, dependent: :destroy, as: :workflow_kit_parameterable, polymorphic: true
+    has_many :parameters, dependent: :destroy, as: :parameterable
 
     def execute( params )
       params = params.merge( Parameter.to_hash( self.parameters ) )
