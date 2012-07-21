@@ -1,15 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Workflow: <%=h @workflow.name %></h1>
+
 <p>
   <b>Name:</b>
-  <%= @workflow.name %>
+  <%=h @workflow.name %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%= @workflow.description %>
+  <%=h @workflow.description %>
 </p>
 
+<h2>Steps to Execute</h2>
+
+<div class="workflow_steps">
+  <ol>
+    <% for step in @workflow.steps %>
+      <li>
+	<span class="brick-name"><%= step.brick.name %></span>
+	<span class="brick-description"><%= step.brick.description %></span>
+      </li>
+    <% end %>
+  </ol>
+</div>
 
 <%= link_to 'Edit', edit_workflow_path(@workflow) %> |
 <%= link_to 'Back', workflows_path %>
