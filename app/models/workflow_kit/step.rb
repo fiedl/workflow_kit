@@ -19,10 +19,7 @@ module WorkflowKit
     end
 
     def brick
-      unless @brick
-        class_name = "WorkflowKit::#{self.brick_name}" if self.brick_name
-        @brick = class_name.constantize.new if class_name
-      end
+      @brick = Brick.find_by_name( self.brick_name ) unless @brick
       return @brick
     end
 

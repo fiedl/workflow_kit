@@ -8,7 +8,7 @@ module WorkflowKit
     end
 
     def name
-      self.class_name
+      self.class.name
     end
 
     def description
@@ -21,8 +21,12 @@ module WorkflowKit
       @@descendants
     end
 
-  end
+    def self.find_by_name( brick_name )
+      class_name = "WorkflowKit::#{brick_name}" if brick_name
+      return class_name.constantize.new 
+    end
 
+  end
 
 # If uncommented, this Brick will also be visible in the application.
 # Thus, this should stay commented in production.
