@@ -2,13 +2,14 @@ module WorkflowKit
   class Workflow < ActiveRecord::Base
     attr_accessible :description, :name
 
-    #has_many :sequence_entries, class_name: "WorkflowSequenceEntry", dependent: :destroy
-    #has_many :bricks, class_name: "WorkflowBrick", through: :sequence_entries
+    has_many :steps, dependent: :destroy, order: :sequence_index
+    has_many :parameters, as: :workflow_kit_parameterable, polymorphic: true, dependent: :destroy
 
     def execute
-#      self.sequence_entries.collect do |sequence_entry|
-#        sequence_entry.execute
-#      end
+      parameter_hash = Parameter.to_hash( self.parameters )
+      self.steps.collect do |step|
+        step.execute( parameter_hash )
+      end
     end
 
   end

@@ -1,26 +1,22 @@
 module WorkflowKit
   class Step < ActiveRecord::Base
 
-    attr_accessible :sequence_index
+    attr_accessible :sequence_index, :brick_name
 
-    #belongs_to :workflow
-    #belongs_to :brick, class_name: "WorkflowBrick", foreign_key: :workflow_brick_id
-    #has_many :parameters, class_name: "WorkflowSequenceParameter", dependent: :destroy
+    belongs_to :workflow
+    has_many :parameters, dependent: :destroy, as: :workflow_kit_parameterable, polymorphic: true
 
-    def execute
-      #self.brick.execute( parameter_hash )
+    def execute( params )
+      params = params.merge( Parameter.to_hash( self.parameters ) )
+      self.brick.execute( params ) if self.brick
     end
 
-    def parameter_hash
-    #  params = {}
-    #  for parameter in self.parameters
-    #    key = parameter.key.to_sym
-    #    value = parameter.value
-    #    value = value.to_i if ( not value.to_i == nil ) and ( value.to_i.to_s == value )
-    #    new_hash = { key => value }
-    #    params = params.merge( new_hash )
-    #  end
-    #  return params
+    def brick
+      unless @brick
+        class_name = self.brick_name
+        @brick = class_name.constantize.new if class_name
+      end
+      return @brick
     end
 
   end
