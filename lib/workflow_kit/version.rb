@@ -1,3 +1,3 @@
 module WorkflowKit
-  VERSION = "0.0.1.apha"
+  VERSION = "0.0.2.alpha"
 end
