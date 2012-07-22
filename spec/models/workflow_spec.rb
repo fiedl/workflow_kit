@@ -15,7 +15,8 @@ describe WorkflowKit::Workflow do
     it "should list the sequence entries" do
       subject.count.should == 3
     end
-    it { should be_kind_of( Array ) }
+    it { should be_kind_of( ActiveRecord::Relation ) }
+    its( :all ) { should be_kind_of( Array ) }
     its( :first ) { should be_kind_of( WorkflowKit::Step ) }
   end
 

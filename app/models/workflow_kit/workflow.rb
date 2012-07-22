@@ -3,7 +3,7 @@ module WorkflowKit
 
     attr_accessible :description, :name, :parameters
 
-    has_many :steps, dependent: :destroy, order: :sequence_index
+    has_many :steps, dependent: :destroy
 
     extend WorkflowKit::Parameterable
     has_many_parameters
@@ -14,6 +14,10 @@ module WorkflowKit
       self.steps.collect do |step|
         step.execute( params )
       end
+    end
+
+    def steps 
+      super.order( :sequence_index ).order( :created_at )
     end
 
   end
