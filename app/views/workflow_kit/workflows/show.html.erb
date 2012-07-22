@@ -1,29 +1,35 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Workflow: <%=h @workflow.name %></h1>
+<div>
+  <p>
+    <b>Name:</b>
+    <%=h @workflow.name %>
+  </p>
 
-<p>
-  <b>Name:</b>
-  <%=h @workflow.name %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%=h @workflow.description %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @workflow.description %>
-</p>
+  <h2>Steps to Execute</h2>
 
-<h2>Steps to Execute</h2>
+  <div class="workflow_steps">
+    <ol>
+      <% for step in @workflow.steps %>
+        <li>
+          <span class="brick-name"><%= step.brick.name %></span>
+          <span class="brick-description"><%= step.brick.description %></span>
+	  <% if step.parameters.count > 0 %>
+            <ul class="parameters">
+	      <% for parameter in step.parameters %>
+	        <li><%= parameter.key %>: <%= parameter.value %></li>
+	      <% end %>
+	    </ul>
+	  <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
 
-<div class="workflow_steps">
-  <ol>
-    <% for step in @workflow.steps %>
-      <li>
-	<span class="brick-name"><%= step.brick.name %></span>
-	<span class="brick-description"><%= step.brick.description %></span>
-      </li>
-    <% end %>
-  </ol>
+  <%= link_to 'Edit', edit_workflow_path(@workflow) %> |
+  <%= link_to 'Back', workflows_path %>
 </div>
-
-<%= link_to 'Edit', edit_workflow_path(@workflow) %> |
-<%= link_to 'Back', workflows_path %>

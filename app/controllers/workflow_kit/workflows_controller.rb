@@ -87,7 +87,7 @@ module WorkflowKit
     # PUT /workflows/1/execute
     def execute
       @workflow = Workflow.find( params[ :id ] )
-      @workflow.execute
+      @workflow.execute( params )
       
       flash[ :notice ] = I18n.t( :executed_workflow, @workflow.name )
       redirect_to :back
