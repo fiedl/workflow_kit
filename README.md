@@ -22,7 +22,27 @@ Or install it yourself as:
 
 ## Usage
 
+### Preparation
+
+* Include in routes
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  mount WorkflowKit::Engine => "/workflow_kit"
+end
+```
+
+* Migrate Database
+```
+rake workflow_kit:install:migrations
+rake db:migrate
+```
+
+
 TODO: Write usage instructions here
+
+## Further Reading
+* Integration of mountable engines (like this gem): http://railscasts.com/episodes/277-mountable-engines?view=asciicast 
 
 ## Contributing
 
