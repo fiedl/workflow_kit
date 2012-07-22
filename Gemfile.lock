@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    workflow_kit (0.0.1.apha)
+    workflow_kit (0.0.2.alpha)
       rails (~> 3.2.6)
 
 GEM

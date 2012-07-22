@@ -27,8 +27,8 @@ describe WorkflowKit::Brick do
     describe ".all" do
       subject { WorkflowKit::Brick.all }
       it "should list all inherited classes, i.e. the different kind of WorkflowBricks" do
-        subject.should == 
-          [WorkflowKit::BoilWaterBrick, WorkflowKit::BoilSpaghettiBrick, WorkflowKit::ServeSpaghettiBrick]
+        (subject & [WorkflowKit::BoilWaterBrick, WorkflowKit::BoilSpaghettiBrick, WorkflowKit::ServeSpaghettiBrick] )
+          .should == [WorkflowKit::BoilWaterBrick, WorkflowKit::BoilSpaghettiBrick, WorkflowKit::ServeSpaghettiBrick]
       end
     end
 

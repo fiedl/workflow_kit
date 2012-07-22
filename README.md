@@ -1,4 +1,4 @@
-# WorkflowKit
+# WorkflowKit [![Build Status](https://secure.travis-ci.org/fiedl/workflow_kit.png?branch=master)](http://travis-ci.org/fiedl/workflow_kit)
 
 This *ruby on rails gem* provides a *workflow construction kit* for rails apps. Users can arrange workflow bricks in a sequence for each workflow and add parameters. When a workflow is executed, each workflow brick executes a callback method written in ruby and passes the parameters.
 

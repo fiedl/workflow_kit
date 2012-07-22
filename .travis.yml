@@ -1,0 +1,2 @@
+before_script:
+  - "sh -c 'bundle & bundle exec rake db:drop db:migrate'"
