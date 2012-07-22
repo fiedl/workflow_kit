@@ -12,7 +12,7 @@ module WorkflowKit
 
     def value
       v = super
-      v = v.to_i if ( not v.to_i == nil ) and ( v.to_i.to_s == v )
+      v = v.to_i if ( not v.to_i == nil ) and ( v.to_i.to_s == v ) if v.respond_to?( :to_i )
       v = true if v == "true"
       v = false if v == "false"
       return v
