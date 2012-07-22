@@ -12,6 +12,7 @@
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
+    <% helpers_of_the_main_app_can_be_called? %>
     <%= yield %>
   </div>
 </body>
