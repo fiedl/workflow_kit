@@ -2,6 +2,10 @@ require_dependency "workflow_kit/application_controller"
 
 module WorkflowKit
   class WorkflowsController < ApplicationController
+
+    load_and_authorize_resource if respond_to? :load_and_authorize_resource
+
+
     # GET /workflows
     # GET /workflows.json
     def index
@@ -16,8 +20,6 @@ module WorkflowKit
     # GET /workflows/1
     # GET /workflows/1.json
     def show
-      @workflow = Workflow.find(params[:id])
-  
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @workflow }
@@ -37,7 +39,6 @@ module WorkflowKit
   
     # GET /workflows/1/edit
     def edit
-      @workflow = Workflow.find(params[:id])
     end
   
     # POST /workflows
@@ -59,8 +60,6 @@ module WorkflowKit
     # PUT /workflows/1
     # PUT /workflows/1.json
     def update
-      @workflow = Workflow.find(params[:id])
-  
       respond_to do |format|
         if @workflow.update_attributes(params[:workflow])
           format.html { redirect_to @workflow, notice: 'Workflow was successfully updated.' }
@@ -75,7 +74,6 @@ module WorkflowKit
     # DELETE /workflows/1
     # DELETE /workflows/1.json
     def destroy
-      @workflow = Workflow.find(params[:id])
       @workflow.destroy
   
       respond_to do |format|
@@ -86,7 +84,6 @@ module WorkflowKit
 
     # PUT /workflows/1/execute
     def execute
-      @workflow = Workflow.find( params[ :id ] )
       @workflow.execute( params )
       
       flash[ :notice ] = I18n.t( :executed_workflow, @workflow.name )
