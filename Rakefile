@@ -23,8 +23,7 @@ end
 APP_RAKEFILE = File.expand_path("../test_app/Rakefile", __FILE__)
 load 'rails/tasks/engine.rake'
 
-
-
+require 'thor'
 Bundler::GemHelper.install_tasks
 
 #require 'rake/testtask'

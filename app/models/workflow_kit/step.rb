@@ -4,7 +4,7 @@ module WorkflowKit
   
   class Step < ActiveRecord::Base
 
-    attr_accessible :sequence_index, :brick_name, :parameters
+    # attr_accessible :sequence_index, :brick_name, :parameters
 
     belongs_to :workflow
 

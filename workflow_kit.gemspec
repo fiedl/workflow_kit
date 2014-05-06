@@ -27,19 +27,18 @@ Gem::Specification.new do |s|
   #s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   #s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.6"
+  s.add_dependency "rails", ">= 3.2"
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "bundler"
-  s.add_development_dependency "rspec-rails", ">= 2.8.0"
-  s.add_development_dependency "guard", "1.0.1"
-  s.add_development_dependency "nokogiri", ">= 1.5.0"
+  s.add_development_dependency "guard"
+  s.add_development_dependency "nokogiri"
   s.add_development_dependency "capybara"
-  s.add_development_dependency 'rspec-rails', '2.10.0'
-  s.add_development_dependency 'guard-rspec', '0.5.5'
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'guard-rspec'
 
 end
 

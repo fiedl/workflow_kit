@@ -1,7 +1,7 @@
 module WorkflowKit
   class Parameter < ActiveRecord::Base
 
-    attr_accessible :key, :value
+    # attr_accessible :key, :value
 
     belongs_to :parameterable, polymorphic: true
 

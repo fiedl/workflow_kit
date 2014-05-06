@@ -20,7 +20,7 @@ describe WorkflowKit::Parameterable do
 
     describe "#parameters" do
       subject { @parameterable.parameters }
-      it { should be_kind_of( Array ) }
+      its(:to_a) { should be_kind_of( Array ) }
       its( :first ) { should be_kind_of WorkflowKit::Parameter }
       its( 'first.key' ) { should == :test_key }
       its( 'first.value' ) { should == "test_value" }
@@ -40,14 +40,14 @@ describe WorkflowKit::Parameterable do
     describe "#parameters=" do 
       it "should transform a parameter hash into WorkflowKit::Parameter objects" do
         @parameterable.parameters = { first_key: "first_value", second_key: "second_value" }
-        @parameterable.parameters.should be_kind_of( Array )
+        @parameterable.parameters.to_a.should be_kind_of( Array )
         @parameterable.parameters.first.should be_kind_of( WorkflowKit::Parameter )
         @parameterable.parameters.first.key.should == :first_key
       end
       it "should also accept WorkflowKit::Parameter objects" do
         @parameterable.parameters = 
           [ WorkflowKit::Parameter.new( key: :first_key, value: "first_value" ) ]
-        @parameterable.parameters.should be_kind_of( Array )
+        @parameterable.parameters.to_a.should be_kind_of( Array )
         @parameterable.parameters.first.should be_kind_of( WorkflowKit::Parameter )
         @parameterable.parameters.first.key.should == :first_key
       end

@@ -16,7 +16,7 @@ describe WorkflowKit::Workflow do
       subject.count.should == 3
     end
     it { should be_kind_of( ActiveRecord::Relation ) }
-    its( :all ) { should be_kind_of( Array ) }
+    its( 'all.to_a' ) { should be_kind_of( Array ) }
     its( :first ) { should be_kind_of( WorkflowKit::Step ) }
   end
 

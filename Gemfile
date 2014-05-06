@@ -5,6 +5,8 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem 'rails', '~> 4.1'
+
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
 
@@ -17,4 +19,4 @@ gem "jquery-rails"
 # gem 'debugger'
 
 gem 'nifty-generators'
-gem 'sass-rails'
+gem 'sass-rails', '>= 4.0.3'

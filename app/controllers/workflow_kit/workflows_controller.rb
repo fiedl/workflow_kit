@@ -20,6 +20,7 @@ module WorkflowKit
     # GET /workflows/1
     # GET /workflows/1.json
     def show
+      @workflow ||= Workflow.find(params[:id])
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @workflow }
@@ -44,7 +45,7 @@ module WorkflowKit
     # POST /workflows
     # POST /workflows.json
     def create
-      @workflow = Workflow.new(params[:workflow])
+      @workflow = Workflow.new(workflow_params)
   
       respond_to do |format|
         if @workflow.save
@@ -61,7 +62,7 @@ module WorkflowKit
     # PUT /workflows/1.json
     def update
       respond_to do |format|
-        if @workflow.update_attributes(params[:workflow])
+        if @workflow.update_attributes(workflow_params)
           format.html { redirect_to @workflow, notice: 'Workflow was successfully updated.' }
           format.json { head :no_content }
         else
@@ -88,6 +89,12 @@ module WorkflowKit
       
       flash[ :notice ] = "#{I18n.t(:executed_workflow)}: #{@workflow.name}"
       redirect_to :back
+    end
+    
+    private
+    
+    def workflow_params
+      params[:workflow].permit(:description, :name, :parameters)
     end
   end
 end

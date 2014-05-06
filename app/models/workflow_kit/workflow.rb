@@ -1,8 +1,6 @@
 module WorkflowKit
   class Workflow < ActiveRecord::Base
 
-    attr_accessible :description, :name, :parameters
-
     has_many :steps, dependent: :destroy
 
     extend WorkflowKit::Parameterable
