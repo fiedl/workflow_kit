@@ -11,8 +11,10 @@ module WorkflowKit
     def execute( params = {} )
       params = {} unless params
       params = params.merge( self.parameters_to_hash ) if self.parameters.count > 0
-      self.steps.collect do |step|
-        step.execute( params )
+      ActiveRecord::Base.transaction do
+        self.steps.collect do |step|
+          step.execute( params )
+        end
       end
     end
 
