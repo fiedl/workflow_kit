@@ -1,6 +1,12 @@
-# WorkflowKit [![Build Status](https://secure.travis-ci.org/fiedl/workflow_kit.png?branch=master)](http://travis-ci.org/fiedl/workflow_kit)
+# WorkflowKit [![Build Status](https://secure.travis-ci.org/fiedl/workflow_kit.png?branch=master)](http://travis-ci.org/fiedl/workflow_kit) [![Dependency Status](https://gemnasium.com/fiedl/workflow_kit.svg)](https://gemnasium.com/fiedl/workflow_kit)
 
 <img src="https://github.com/fiedl/workflow_kit/raw/master/test_app/app/assets/images/screenshot.png" height="300" align="right" vspace="20" hspace="20" />
+
+---
+
+2016-01-25: This **gem has been abandoned** and [moved](https://github.com/fiedl/your_platform/commit/10597164071ab6b96336adf64706d3b1dbc7011a) to [your_platform](https://github.com/fiedl/your_platform).
+
+---
 
 This *ruby on rails gem* provides a *workflow construction kit* for rails apps. Users can arrange workflow bricks in a sequence for each workflow and add parameters. When a workflow is executed, each workflow brick executes a callback method written in ruby and passes the parameters.
 
